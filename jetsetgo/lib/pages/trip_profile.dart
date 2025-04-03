@@ -232,7 +232,7 @@ class _TripScreenState extends State<TripScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  WalletPage(tripName: widget.tripName),
+                                  WalletPage(tripName: widget.tripName, tripId: widget.tripId,),
                             ),
                           );
                         },
