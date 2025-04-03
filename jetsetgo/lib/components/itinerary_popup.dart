@@ -41,12 +41,15 @@ void showItineraryDialog({
           return Dialog(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.6,
+              width: MediaQuery.of(context).size.width * 0.85,
+              height: MediaQuery.of(context).size.height * 0.65,
               padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
-                  const Text("Itinerary Details", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  const Text(
+                    "Itinerary Details",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
                   const SizedBox(height: 10),
                   Expanded(
                     child: SingleChildScrollView(
@@ -73,79 +76,72 @@ void showItineraryDialog({
                           ...List.generate(timeControllers.length, (index) {
                             return Padding(
                               padding: const EdgeInsets.symmetric(vertical: 8.0),
-                              child: Row(
+                              child: Column(
                                 children: [
-                                  // Hour input
-                                  SizedBox(
-                                    width: 70,
-                                    child: TextField(
-                                      controller: timeControllers[index],
-                                      decoration: const InputDecoration(
-                                        labelText: "Hour",
-                                        border: OutlineInputBorder(),
-                                        isDense: true,
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 70,
+                                        child: TextField(
+                                          controller: timeControllers[index],
+                                          decoration: const InputDecoration(
+                                            labelText: "Hour",
+                                            border: OutlineInputBorder(),
+                                            isDense: true,
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
                                       ),
-                                      keyboardType: TextInputType.number,
-                                    ),
-                                  ),
-
-                                  const SizedBox(width: 10),
-
-                                  // AM/PM dropdown
-                                  SizedBox(
-                                    width: 80,
-                                    child: DropdownButtonFormField<String>(
-                                      value: selectedAmPm[index],
-                                      decoration: const InputDecoration(
-                                        border: OutlineInputBorder(),
-                                        isDense: true,
-                                        contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+                                      const SizedBox(width: 10),
+                                      SizedBox(
+                                        width: 80,
+                                        child: DropdownButtonFormField<String>(
+                                          value: selectedAmPm[index],
+                                          decoration: const InputDecoration(
+                                            border: OutlineInputBorder(),
+                                            isDense: true,
+                                            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+                                          ),
+                                          items: amPmOptions.map((String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(value),
+                                            );
+                                          }).toList(),
+                                          onChanged: (newValue) {
+                                            setDialogState(() {
+                                              selectedAmPm[index] = newValue!;
+                                            });
+                                          },
+                                        ),
                                       ),
-                                      items: amPmOptions.map((String value) {
-                                        return DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Text(value),
-                                        );
-                                      }).toList(),
-                                      onChanged: (newValue) {
-                                        setDialogState(() {
-                                          selectedAmPm[index] = newValue!;
-                                        });
-                                      },
-                                    ),
-                                  ),
-
-                                  const SizedBox(width: 10),
-
-                                  // Activity input
-                                  Expanded(
-                                    child: TextField(
-                                      controller: activityControllers[index],
-                                      decoration: const InputDecoration(
-                                        labelText: "Activity",
-                                        border: OutlineInputBorder(),
-                                        isDense: true,
+                                      const Spacer(),
+                                      IconButton(
+                                        icon: const Icon(Icons.delete_outlined, color: Colors.red),
+                                        onPressed: () {
+                                          setDialogState(() {
+                                            timeControllers.removeAt(index);
+                                            activityControllers.removeAt(index);
+                                            selectedAmPm.removeAt(index);
+                                          });
+                                        },
                                       ),
-                                    ),
+                                    ],
                                   ),
-
-                                  const SizedBox(width: 6),
-
-                                  // Delete button
-                                  IconButton(
-                                    icon: const Icon(Icons.delete_outlined, color: Colors.red),
-                                    onPressed: () {
-                                      setDialogState(() {
-                                        timeControllers.removeAt(index);
-                                        activityControllers.removeAt(index);
-                                        selectedAmPm.removeAt(index);
-                                      });
-                                    },
+                                  const SizedBox(height: 8),
+                                  TextField(
+                                    controller: activityControllers[index],
+                                    decoration: const InputDecoration(
+                                      labelText: "Activity",
+                                      border: OutlineInputBorder(),
+                                      isDense: true,
+                                    ),
                                   ),
                                 ],
                               ),
                             );
                           }),
+                          const SizedBox(height: 10),
                           TextButton(
                             onPressed: () {
                               setDialogState(() {
@@ -172,9 +168,7 @@ void showItineraryDialog({
                         onPressed: () => Navigator.pop(context),
                         child: const Text(
                           "Cancel",
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
                       TextButton(
@@ -198,7 +192,7 @@ void showItineraryDialog({
                         },
                         child: Text(
                           isEditing ? "Update" : "Add",
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Color(0xFFD76C5B),
                           ),
                         ),

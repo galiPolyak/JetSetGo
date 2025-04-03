@@ -86,54 +86,22 @@ class _ItinerarySectionState extends State<ItinerarySection> {
 
   // **Function to Remove an Itinerary Day**
   Future<void> _deleteItineraryDay(int index) async {
-    final confirm = await showDialog<bool>(
-      context: context, 
-      builder: (context) => AlertDialog(
-        backgroundColor: const Color(0xFF2C2C2E),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        title: const Text(
-          'Are you sure?',
-          style: TextStyle(color: Colors.white),
-        ),
-        content: const Text(
-          'This will permanently remove this itinerary day.', 
-          style: TextStyle(color: Color(0xFFA1A1A3)),
-        ),
-        actions: [
-          TextButton(
-            child: const Text('Cancel', style: TextStyle(color: Colors.white)),
-            onPressed: () => Navigator.of(context).pop(false), 
-          ),
-          TextButton(
-            child: const Text(
-              'Delete',
-              style: TextStyle(color: Colors.redAccent),
-            ), 
-            onPressed: () => Navigator.of(context).pop(true),
-          ),
-        ]
-      ),
-    ); 
-    
-    if (confirm == true){
-      final user = FirebaseAuth.instance.currentUser!;
-      String docId = itineraryDays[index]["id"];
+    final user = FirebaseAuth.instance.currentUser!;
+    String docId = itineraryDays[index]["id"];
 
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(user.uid)
-          .collection('trip')
-          .doc(tripId)
-          .collection('itinerary')
-          .doc(docId)
-          .delete();
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .collection('trip')
+        .doc(tripId)
+        .collection('itinerary')
+        .doc(docId)
+        .delete();
 
-      setState(() {
-        itineraryDays.removeAt(index);
-      });
-    }
+    setState(() {
+      itineraryDays.removeAt(index);
+    });
   }
-
 
   // **Show Dialog to Add or Edit an Itinerary**
   void _showItineraryDialog(BuildContext context, {int? editIndex}) {

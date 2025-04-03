@@ -72,7 +72,7 @@ class _ItineraryDayCardState extends State<ItineraryDayCard> {
                         title: const Text('Delete this day?', style: TextStyle(color: Colors.white)),
                         content: const Text(
                           'Are you sure you want to remove this itinerary day?',
-                          style: TextStyle(color: Color(0xFFA6BDA3)),
+                          style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                         ),
                         actions: [
                           TextButton(
