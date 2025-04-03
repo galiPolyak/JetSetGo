@@ -21,24 +21,26 @@ class WalletSection extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
           
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text(
-                "Wallet",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFFFBE8D2), // peach!
+          child: Center( // 👈 Add this
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Text(
+                  "Wallet",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFFBE8D2), // peach!
+                  ),
                 ),
-              ),
-              SizedBox(height: 10),
-              Icon(
-                Icons.wallet,
-                size: 180,
-                color: Color(0xFFFBE8D2), // peach
-              ),
-            ],
+                SizedBox(height: 10),
+                Icon(
+                  Icons.wallet,
+                  size: 140,
+                  color: Color(0xFFFBE8D2), // peach
+                ),
+              ],
+            ),
           ),
         ),
       ),

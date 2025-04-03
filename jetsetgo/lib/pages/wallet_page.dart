@@ -68,8 +68,8 @@ class _WalletPageState extends State<WalletPage> {
 
     await docRef.set({
       'title': title,
-      'date': date.toIso8601String(),
-      'url': file.path, // Replace with Firebase Storage URL if using uploads
+        'date': DateFormat('yyyy-MM-dd').format(date), 
+        'url': file.path,
     });
 
     setState(() {
