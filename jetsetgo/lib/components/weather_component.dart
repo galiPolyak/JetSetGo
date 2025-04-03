@@ -47,7 +47,7 @@ class WeatherSection extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: const Color(0xFF2E2E2E), // Slightly lighter than charcoal
+          color: const Color(0xFF2C2C2E), 
           borderRadius: BorderRadius.circular(12), // Match the border radius
         ),
         child: Column(

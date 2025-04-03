@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 
 class AddDocumentDialog extends StatefulWidget {
-  final Function(String, DateTime, File) onDocumentAdded; // Pass the new document to WalletPage
+  final Function(String, DateTime, PlatformFile) onDocumentAdded; // Pass the new document to WalletPage
 
   const AddDocumentDialog({super.key, required this.onDocumentAdded});
 
@@ -14,7 +14,7 @@ class AddDocumentDialog extends StatefulWidget {
 class _AddDocumentDialogState extends State<AddDocumentDialog> {
   final TextEditingController _titleController = TextEditingController();
   DateTime? _selectedDate;
-  File? _selectedFile;
+  PlatformFile? _selectedFile;
 
   // Function to pick a PDF file
   Future<void> _pickFile() async {
@@ -25,13 +25,13 @@ class _AddDocumentDialogState extends State<AddDocumentDialog> {
 
     if (!mounted) return; //ensure widget is still mounted
 
-    if (result != null && result.files.single.path != null) {
+    if (result != null) {
       setState(() {
-        _selectedFile = File(result.files.single.path!);
+        _selectedFile = result.files.single;
       });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("No file selected or file path missing")),
+        const SnackBar(content: Text("No file selected")),
       );
     }
   }
