@@ -7,7 +7,7 @@ import 'package:jetsetgo/components/weather_component.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:convert';
-import 'package:jetsetgo/pages/wallet.dart';
+import 'package:jetsetgo/pages/wallet_page.dart';
 import 'package:jetsetgo/components/navbar.dart';
 
 class TripScreen extends StatefulWidget {
@@ -202,6 +202,7 @@ class _TripScreenState extends State<TripScreen> {
                           //fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 5),
                       Text(
