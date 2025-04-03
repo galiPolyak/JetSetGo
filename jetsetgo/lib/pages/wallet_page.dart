@@ -1,5 +1,5 @@
-import 'dart:io';
 import 'package:open_file/open_file.dart';
+import 'package:file_picker/file_picker.dart';
 
 
 import 'package:flutter/material.dart';
@@ -22,11 +22,12 @@ class _WalletPageState extends State<WalletPage> {
   List<Map<String, dynamic>> walletItems = [];
 
   //function to add new document to walletItems 
-    void _addDocument(String title, DateTime date, File file){
+    void _addDocument(String title, DateTime date, PlatformFile file){
       setState((){
         walletItems.add({
           'title': title, 
           'date': date.toLocal().toString().split(' ')[0], //format date 
+          'file': file,
           'icon': Icons.picture_as_pdf, //add PDF icon!!! 
         }); 
       });
@@ -136,7 +137,7 @@ class WalletCard extends StatelessWidget {
   final String date;
   final IconData icon;
   final VoidCallback onDelete;
-  final File file; //to open file on tap
+  final PlatformFile file; //to open file on tap
 
   const WalletCard({
     super.key,

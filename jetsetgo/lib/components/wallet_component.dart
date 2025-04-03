@@ -29,14 +29,14 @@ class WalletSection extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white, // Clean, readable
+                  color: Color(0xFFFBE8D2), // peach!
                 ),
               ),
               SizedBox(height: 10),
               Icon(
                 Icons.wallet,
-                size: 120,
-                color: Colors.white70, // Soft white, not too harsh
+                size: 180,
+                color: Color(0xFFFBE8D2), // peach
               ),
             ],
           ),
