@@ -158,7 +158,7 @@ class _TripScreenState extends State<TripScreen> {
           Padding(
             padding: const EdgeInsets.only(right: 12),
             child: IconButton(
-              icon: const Icon(Icons.delete_outline, color: Colors.redAccent),
+              icon: const Icon(Icons.delete_outline, color: Color(0xFFE38A71)),
               iconSize: 40,
               onPressed: showDeleteConfirmationDialog,
             ),
@@ -171,12 +171,12 @@ class _TripScreenState extends State<TripScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Title Box
+              // Trip Header
               Card(
                 color: const Color(0xFF2C2C2E),
                 elevation: 4,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(16),
                 ),
                 child: Container(
                   width: double.infinity,
@@ -186,20 +186,29 @@ class _TripScreenState extends State<TripScreen> {
                   ),
                   child: Column(
                     children: [
-                      Text(
-                        "My trip to...",
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white70,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(Icons.map, color: Color(0xFFF4CBB2), size: 22),
+                          SizedBox(width: 8),
+                          Text(
+                            "My trip to...",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white70,
+                            ),
+                          ),
+                        ],
                       ),
+
+                      
                       const SizedBox(height: 5),
                       Text(
                         widget.tripName.toUpperCase(),
                         style: const TextStyle(
-                          fontSize: 35,
-                          //fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
                         textAlign: TextAlign.center,
@@ -208,7 +217,7 @@ class _TripScreenState extends State<TripScreen> {
                       Text(
                         "Dates: ${widget.tripDates}",
                         style: const TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w500,
                           color: Color(0xFFA1A1A3),
                         ),

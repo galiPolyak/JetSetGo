@@ -44,7 +44,7 @@ void showItineraryDialog({
             child: Container(
               padding: const EdgeInsets.all(20),
               width: MediaQuery.of(context).size.width * 0.85,
-              height: MediaQuery.of(context).size.height * 0.65,
+              height: MediaQuery.of(context).size.height * 0.7,
               child: Column(
                 children: [
                   const Text(
@@ -73,7 +73,7 @@ void showItineraryDialog({
                           const SizedBox(height: 10),
                           ...List.generate(timeControllers.length, (index) {
                             return Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 8.0),
+                              padding: const EdgeInsets.only(bottom: 16),
                               child: Column(
                                 children: [
                                   Row(

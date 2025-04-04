@@ -21,7 +21,7 @@ class TripCard extends StatelessWidget {
       child: Card(
         elevation: 5,
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-        color: const Color(0xFF2C2C2E), // Dark card background
+        color: const Color(0xFF3A3A3C), // Dark card background
         
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16), //rounded edges\
@@ -55,7 +55,7 @@ class TripCard extends StatelessWidget {
                       dates.toUpperCase(),
                       style: const TextStyle(
                         fontSize: 14,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w600,
                         color: Color(0xFFA1A1A3),
                       ),
                     ),
@@ -78,13 +78,14 @@ class TripCard extends StatelessWidget {
                 height: 56,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: Colors.white.withAlpha((0.08 * 255).round()), // subtle icon bg : ~20 alpha
+                  color: const Color(0xFFE38A71),
+                  //color: Colors.white.withAlpha((0.08 * 255).round()), // subtle icon bg : ~20 alpha
                   border: Border.all(color: Colors.white12),    //,width: 2),
                 ),
                 child: Icon(
-                  Icons.airplanemode_active, 
+                  Icons.place,
                   size: 32, 
-                  color: Color.fromARGB(255, 140, 160, 225), // soft red accent
+                  color: const Color(0xFFF4CBB2), // peach!
                 ),
               ),
             ],
