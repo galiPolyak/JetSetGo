@@ -16,7 +16,7 @@ class _AddDocumentDialogState extends State<AddDocumentDialog> {
   DateTime? _selectedDate;
   PlatformFile? _selectedFile;
 
-  // Function to pick a PDF file
+  // Function: pick a PDF file
   Future<void> _pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
@@ -36,7 +36,7 @@ class _AddDocumentDialogState extends State<AddDocumentDialog> {
     }
   }
 
-  // Function to pick a date
+  // Function: pick a date
   Future<void> _pickDate() async {
     DateTime? pickedDate = await showDatePicker(
       context: context,
@@ -87,13 +87,31 @@ class _AddDocumentDialogState extends State<AddDocumentDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Add Document"),
+      backgroundColor: const Color(0xFFA6BDA3), // Sage green
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      title: const Text(
+        "Add Document",
+        style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+           ),
+        ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           TextField(
             controller: _titleController,
-            decoration: const InputDecoration(labelText: "Document Title"),
+            style: const TextStyle(color: Color(0xFF1F1F1F)),
+            decoration: InputDecoration(
+              labelText: "Document Title",
+              labelStyle: const TextStyle(color: Color(0xFF1F1F1F)),
+              filled: true,
+              fillColor: const Color(0xFFC9D6C9), // lighter sage
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide.none,
+              ),
+            ),
           ),
           const SizedBox(height: 10),
           Row(
@@ -104,7 +122,7 @@ class _AddDocumentDialogState extends State<AddDocumentDialog> {
                   : "Date: ${_selectedDate!.toLocal()}".split(' ')[0]),
               TextButton(
                 onPressed: _pickDate,
-                child: const Text("Pick Date"),
+                child: const Text("Pick Date", style: TextStyle(color: Color(0xFFD76C5B))),
               ),
             ],
           ),
@@ -112,19 +130,34 @@ class _AddDocumentDialogState extends State<AddDocumentDialog> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(_selectedFile == null ? "No file selected" : "PDF selected"),
+              Text(
+                _selectedFile == null ? "No file selected" : "PDF selected",
+                style: const TextStyle(color: Colors.white),
+              ),
               TextButton(
                 onPressed: _pickFile,
-                child: const Text("Choose PDF"),
+                child: const Text("Choose PDF", style: TextStyle(color: Color(0xFFD76C5B))),
               ),
             ],
           ),
         ],
       ),
       actions: [
-        TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cancel")),
-        ElevatedButton(onPressed: _saveDocument, child: const Text("Save")),
+        TextButton(
+          onPressed: () => Navigator.pop(context), 
+          child: const Text("Cancel", style: TextStyle(color: Colors.white)),
+        ),
+        ElevatedButton(
+          onPressed: _saveDocument, 
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFFD76C5B), // Coral
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          ),
+          child: const Text("Save"),
+        ),
       ],
     );
   }
 }
+

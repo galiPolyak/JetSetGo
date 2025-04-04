@@ -36,7 +36,7 @@ class WalletSection extends StatelessWidget {
                 SizedBox(height: 10),
                 Icon(
                   Icons.wallet,
-                  size: 140,
+                  size: 110,
                   color: Color(0xFFFBE8D2), // peach
                 ),
               ],

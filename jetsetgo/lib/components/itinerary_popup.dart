@@ -40,34 +40,32 @@ void showItineraryDialog({
         builder: (context, setDialogState) {
           return Dialog(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            backgroundColor: const Color(0xFF2C2C2E),
             child: Container(
+              padding: const EdgeInsets.all(20),
               width: MediaQuery.of(context).size.width * 0.85,
               height: MediaQuery.of(context).size.height * 0.65,
-              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   const Text(
                     "Itinerary Details",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20, color: Colors.white,),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 14),
                   Expanded(
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
                           Row(
                             children: [
-                              const Text("Day:", style: TextStyle(fontSize: 16)),
+                              const Text("Day:", style: TextStyle(fontSize: 16, color: Colors.white)),
                               const SizedBox(width: 10),
                               Expanded(
                                 child: TextField(
                                   controller: dayController,
                                   keyboardType: TextInputType.number,
-                                  decoration: const InputDecoration(
-                                    hintText: "Enter number",
-                                    border: OutlineInputBorder(),
-                                    contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                                  ),
+                                  style: TextStyle(color: Colors.white70),
+                                  decoration: _peachOutlineInput("Enter number"),
                                 ),
                               ),
                             ],
@@ -84,12 +82,9 @@ void showItineraryDialog({
                                         width: 70,
                                         child: TextField(
                                           controller: timeControllers[index],
-                                          decoration: const InputDecoration(
-                                            labelText: "Hour",
-                                            border: OutlineInputBorder(),
-                                            isDense: true,
-                                          ),
                                           keyboardType: TextInputType.number,
+                                          style: const TextStyle(color: Colors.white70),
+                                          decoration: _peachOutlineInput("Hour"),
                                         ),
                                       ),
                                       const SizedBox(width: 10),
@@ -97,15 +92,12 @@ void showItineraryDialog({
                                         width: 80,
                                         child: DropdownButtonFormField<String>(
                                           value: selectedAmPm[index],
-                                          decoration: const InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            isDense: true,
-                                            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-                                          ),
+                                          dropdownColor: const Color(0xFF3A3A3C),
+                                          decoration: _peachOutlineInput(null),
                                           items: amPmOptions.map((String value) {
                                             return DropdownMenuItem<String>(
                                               value: value,
-                                              child: Text(value),
+                                              child: Text(value, style: const TextStyle(color: Colors.white70)),
                                             );
                                           }).toList(),
                                           onChanged: (newValue) {
@@ -117,7 +109,7 @@ void showItineraryDialog({
                                       ),
                                       const Spacer(),
                                       IconButton(
-                                        icon: const Icon(Icons.delete_outlined, color: Colors.red),
+                                        icon: const Icon(Icons.delete_outlined, color: Color(0xFFD76C5B)),
                                         onPressed: () {
                                           setDialogState(() {
                                             timeControllers.removeAt(index);
@@ -131,17 +123,14 @@ void showItineraryDialog({
                                   const SizedBox(height: 8),
                                   TextField(
                                     controller: activityControllers[index],
-                                    decoration: const InputDecoration(
-                                      labelText: "Activity",
-                                      border: OutlineInputBorder(),
-                                      isDense: true,
-                                    ),
+                                    style: const TextStyle(color: Colors.white70),
+                                    decoration: _peachOutlineInput("Activity"),
                                   ),
                                 ],
                               ),
                             );
                           }),
-                          const SizedBox(height: 10),
+                          const SizedBox(height: 8),
                           TextButton(
                             onPressed: () {
                               setDialogState(() {
@@ -153,7 +142,8 @@ void showItineraryDialog({
                             child: const Text(
                               "+ Add Another Activity",
                               style: TextStyle(
-                                color: Color.fromARGB(255, 140, 160, 225),
+                                color: Color(0xFFD76C5B),
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
@@ -161,6 +151,7 @@ void showItineraryDialog({
                       ),
                     ),
                   ),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -168,9 +159,10 @@ void showItineraryDialog({
                         onPressed: () => Navigator.pop(context),
                         child: const Text(
                           "Cancel",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Color(0xFFD76C5B)),
                         ),
                       ),
+                      const SizedBox(width: 8),
                       TextButton(
                         onPressed: () {
                           if (dayController.text.isNotEmpty) {
@@ -193,7 +185,7 @@ void showItineraryDialog({
                         child: Text(
                           isEditing ? "Update" : "Add",
                           style: const TextStyle(
-                            color: Color(0xFFD76C5B),
+                            color: Colors.white70,
                           ),
                         ),
                       ),
@@ -208,3 +200,22 @@ void showItineraryDialog({
     },
   );
 }
+
+InputDecoration _peachOutlineInput(String? label) {
+  return InputDecoration(
+    labelText: label,
+    labelStyle: const TextStyle(color: Colors.white70),
+    filled: true,
+    fillColor: const Color(0xFF3A3A3C),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide.none,
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: const BorderSide(color: Color(0xFFF4CBB2), width: 1.5),
+    ),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+  );
+}
+

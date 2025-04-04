@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:open_file/open_file.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:intl/intl.dart'; // Ensure this is at the top
+import 'package:intl/intl.dart'; 
 
 class WalletPage extends StatefulWidget {
   final String tripId;
@@ -105,7 +105,7 @@ class _WalletPageState extends State<WalletPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1C1C1E),
+      backgroundColor: const Color(0xFF2C2C2E),
       appBar: AppBar(
         toolbarHeight: 120,
         title: Text(
@@ -115,7 +115,7 @@ class _WalletPageState extends State<WalletPage> {
           maxLines: 3,
           textAlign: TextAlign.center,
         ),
-        backgroundColor: const Color(0xFF1C1C1E),
+        backgroundColor: const Color(0xFF2C2C2E),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -124,7 +124,7 @@ class _WalletPageState extends State<WalletPage> {
             const SizedBox(height: 20),
             Expanded(
               child: walletItems.isEmpty
-                  ? const Center(child: Text("No documents added yet.", style: TextStyle(color: Colors.white)))
+                  ? const Center(child: Text("No documents added yet.", style: TextStyle(color: Colors.white70)))
                   : ListView.builder(
                       itemCount: walletItems.length,
                       itemBuilder: (context, index) {
@@ -142,26 +142,23 @@ class _WalletPageState extends State<WalletPage> {
           ],
         ),
       ),
-      floatingActionButton: SizedBox(
-        width: 180,
-        height: 60,
-        child: FloatingActionButton.extended(
-          backgroundColor: const Color.fromARGB(255, 222, 177, 109),
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (context) => AddDocumentDialog(
-                onDocumentAdded: _addDocument,
-              ),
-            );
-          },
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: const Color(0xFFA6BDA3), // sage green
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => AddDocumentDialog(
+              onDocumentAdded: _addDocument,
+            ),
+          );
+        },
           label: const Text(
             'Add Document',
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
+            style: TextStyle( fontWeight: FontWeight.bold, color:Color(0xFF1F1F1F)),
           ),
-          icon: const Icon(Icons.add, size: 28, color: Colors.white),
-        ),
+          icon: const Icon(Icons.add, color: Color(0xFFD76C5B)), //coral
       ),
+  
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       bottomNavigationBar: BottomNavBar(
         selectedIndex: _selectedIndex,
@@ -194,13 +191,13 @@ class WalletCard extends StatelessWidget {
       child: Card(
         margin: const EdgeInsets.symmetric(vertical: 10),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        elevation: 5,
-        color: const Color.fromARGB(255, 34, 36, 36),
+        elevation: 4,
+        color: const Color(0xFFC9D6C9),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Row(
             children: [
-              const Icon(Icons.picture_as_pdf, size: 40, color: Colors.orangeAccent),
+              const Icon(Icons.picture_as_pdf, size: 40, color: Color(0xFFD76C5B)),
               const SizedBox(width: 15),
               Expanded(
                 child: Column(
@@ -208,18 +205,23 @@ class WalletCard extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: const TextStyle(
+                        fontSize: 18, 
+                        fontWeight: FontWeight.bold, 
+                        color: Color(0xFF1F1F1F),
+                      ),
                     ),
                     const SizedBox(height: 5),
                     Text(
                       'Date: $date',
-                      style: const TextStyle(fontSize: 16, color: Colors.white70),
+                      style: const TextStyle(fontSize: 16, color: Color(0xFF555555),
+                      ),
                     ),
                   ],
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.delete_outline, color: Colors.redAccent),
+                icon: const Icon(Icons.delete_outline, color: Color(0xFFD76C5B)),
                 onPressed: onDelete,
               ),
             ],
