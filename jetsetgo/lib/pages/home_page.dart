@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jetsetgo/components/trip_list.dart';
 import 'package:jetsetgo/pages/add_trip.dart';
-import 'package:jetsetgo/components/add_button.dart'; // Import the AddButton component
-import 'package:jetsetgo/components/navbar.dart'; // Import your BottomNavBar component
+import 'package:jetsetgo/components/add_button.dart'; 
+import 'package:jetsetgo/components/navbar.dart'; 
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -17,11 +17,11 @@ class HomePage extends StatelessWidget {
       backgroundColor: const Color(0xFF1C1C1E),
       appBar: AppBar(
         toolbarHeight: 140,
-        automaticallyImplyLeading: false, // This removes the back button
+        automaticallyImplyLeading: false, 
         title: StreamBuilder<DocumentSnapshot>(
           stream: FirebaseFirestore.instance
               .collection('users')
-              .doc(user.uid) // Fetch the user's document
+              .doc(user.uid) //fetch user's document
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
               return const Text('Welcome User'); // Fallback if data is missing
             }
 
-            // Extract the user's name
+            //get the user's name
             final userData = snapshot.data!.data() as Map<String, dynamic>;
             final userName = userData['name'] ?? 'User'; // Default to 'User' if name is missing
 
@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
                   color: Colors.white,
                 ),
                 overflow: TextOverflow.ellipsis,
-                maxLines: 4, // wrap if needed
+                maxLines: 4, 
                 textAlign: TextAlign.center,
               ),
             );
@@ -63,11 +63,11 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      // Add a circular "Add Trip" button at the bottom right
+      //"Add Trip" button at the bottom right
       floatingActionButton: AddButton(
         label: 'Add Trip',
         onPressed: () {
-          // Navigate to the AddTrip screen
+          //navigate to AddTrip 
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const AddTrip()),
@@ -76,9 +76,9 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat, // Position at bottom right
 
-      // Bottom Navigation Bar added below the floating action button
+    
       bottomNavigationBar: BottomNavBar(
-        selectedIndex: 0, // Default selected index, change as necessary
+        selectedIndex: 0, 
         onItemTapped: (index) {
          
         },

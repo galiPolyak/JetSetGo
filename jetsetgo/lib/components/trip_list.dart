@@ -30,12 +30,12 @@ class TripList extends StatelessWidget {
           return const Center(child: Text('No trips found.'));
         }
 
-        // Extract trip documents from Firestore
+        //getting trip documents from Firestore
         final trips = snapshot.data!.docs;
 
         return ListView(
           children: trips.map((trip) {
-            // Fetch the nested tripID document for each trip
+            // fetching nested tripID document for each trip
             return StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection('users')
@@ -57,7 +57,7 @@ class TripList extends StatelessWidget {
                   return const Center(child: Text('No trip details found.'));
                 }
 
-                // Extract trip details from the tripID document
+                // get the details from the tripID document
                 final tripDetails = tripIdSnapshot.data!.docs.first.data() as Map<String, dynamic>;
 
                 return TripCard(
@@ -65,7 +65,7 @@ class TripList extends StatelessWidget {
                   dates: '${tripDetails['Month']} ${tripDetails['DateLeaving']} - ${tripDetails['DateReturning']}, 2025',
                   duration: '${tripDetails['Duration']} days',
                   onTap: () {
-                    // Navigate to the TripScreen with trip details
+                    // Nnavigate to TripScreen with trip details
                     Navigator.push(
                       context,
                       MaterialPageRoute(

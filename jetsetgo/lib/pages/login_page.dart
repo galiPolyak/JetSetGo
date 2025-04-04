@@ -29,9 +29,9 @@ class LoginPage extends StatelessWidget {
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
 
-    //Check if email or password is empty
+    //Check if email/password is empty
     if (email.isEmpty || password.isEmpty) {
-      Navigator.pop(context); // Remove loading screen before error
+      Navigator.pop(context); 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Email and password cannot be empty")),
       );
@@ -44,7 +44,7 @@ class LoginPage extends StatelessWidget {
         password: password,
       );
 
-      Navigator.pop(context); //Remove loading screen before navigation
+      Navigator.pop(context); //remove loading screen before nav
 
       // Redirect to home after successful login
       Navigator.pushReplacement(
@@ -56,7 +56,7 @@ class LoginPage extends StatelessWidget {
 
       String errorMessage = "An error occurred. Please try again.";
 
-      // Handle specific Firebase errors
+      // Handle Firebase errors
       if (e.code == 'user-not-found') {
         errorMessage = "No user found for that email.";
       } else if (e.code == 'wrong-password') {
@@ -93,7 +93,6 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(height: 40),
 
 
-                // animated welcome! 
                 // welcome back, you've been missed!
                 TweenAnimationBuilder<double>(
                   tween: Tween<double>(begin: 0.8, end: 1), 

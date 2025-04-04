@@ -13,8 +13,8 @@ class AddButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 80, // Set the width of the button
-      height: 80, // Set the height of the button
+      width: 80, // width of the button
+      height: 80, //height of the button
       child: FloatingActionButton(
         onPressed: onPressed,
         backgroundColor: const Color(0xFFD76C5B), //coral!
@@ -24,12 +24,12 @@ class AddButton extends StatelessWidget {
             const Icon(
               Icons.add,
               color: Colors.white,
-              size: 36, // Larger icon size
+              size: 36, 
             ),
             Text(
               label,
               style: const TextStyle(
-                fontSize: 12, // Smaller font size
+                fontSize: 12, 
                 color: Colors.white,
               ),
             ),

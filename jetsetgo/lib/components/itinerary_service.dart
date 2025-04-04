@@ -5,7 +5,7 @@ class ItineraryService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  // Function to add a new itinerary
+  // Function: add a new itinerary
   Future<void> addItinerary(String tripId, String activity1, String activity2) async {
     final user = _auth.currentUser!;
 
@@ -18,7 +18,7 @@ class ItineraryService {
         .collection('tripItinerary')
         .doc(); // Auto-generate a new document ID
 
-    // Add a new document to the day1 subcollection
+    // Add a new document to the subcollection
     await itineraryRef.collection('day1').doc().set({
       'Activity1': activity1,
       'Activity2': activity2,

@@ -49,7 +49,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         errorMessage = "Too many attempts. Try again later.";
       }
 
-      //show Error Message to User
+      //error msg for user 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
@@ -81,7 +81,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               children: [
                 const SizedBox(height: 40),
 
-                // Instruction text
+                //instrcutions
                 const Text(
                   'Please provide your email and we will send you a link to reset your password :)',
                   textAlign: TextAlign.center,
@@ -94,7 +94,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
                 const SizedBox(height: 30),
 
-                // Email text field
+                //email  text field
                 MyTextField(
                   controller: _emailController,
                   hintText: 'Email',
@@ -106,7 +106,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 // Submit button
                 MyButton(
                   text: 'Reset Password',
-                  onTap: passwordReset, // Now properly handles errors and success
+                  onTap: passwordReset, 
                 ),
 
                 const SizedBox(height: 50),

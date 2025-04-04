@@ -199,7 +199,7 @@ class _PackingListSectionState extends State<PackingListSection> {
           Checkbox(
             value: isChecked,
             onChanged: (value) => _toggleChecked(itemId, value!),
-            activeColor: const Color(0xFFD76C5B), // Coral check color
+            activeColor: const Color(0xFFA6BDA3), // Coral check color
           ),
           Expanded(
             child: Text(
@@ -210,7 +210,7 @@ class _PackingListSectionState extends State<PackingListSection> {
                 color: const Color(0xFF1F1F1F), // Charcoal text
                 decoration: isChecked ? TextDecoration.lineThrough : null,
                 decorationColor: const Color(0xFF1F1F1F), // charcoal line
-                decorationThickness: 2, // optional: makes it more visible
+                decorationThickness: 2, 
               ),
             ),
           ),

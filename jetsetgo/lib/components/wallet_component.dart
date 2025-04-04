@@ -21,7 +21,7 @@ class WalletSection extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
           
-          child: Center( // 👈 Add this
+          child: Center( 
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: const [
@@ -36,7 +36,7 @@ class WalletSection extends StatelessWidget {
                 SizedBox(height: 10),
                 Icon(
                   Icons.wallet,
-                  size: 110,
+                  size: 100,
                   color: Color(0xFFFBE8D2), // peach
                 ),
               ],

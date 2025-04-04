@@ -52,7 +52,7 @@ class _AddDocumentDialogState extends State<AddDocumentDialog> {
     }
   }
 
-  // Function to save the document locally
+  // Function: save the document locally
   void _saveDocument() {
     if (_titleController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(

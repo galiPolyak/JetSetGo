@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jetsetgo/pages/home_page.dart'; // Import your HomePage here
-import 'package:jetsetgo/pages/profile_page.dart'; // Import ProfilePage here
+import 'package:jetsetgo/pages/home_page.dart'; 
+import 'package:jetsetgo/pages/profile_page.dart'; 
 
 class BottomNavBar extends StatelessWidget {
   final int selectedIndex;
@@ -17,26 +17,32 @@ class BottomNavBar extends StatelessWidget {
       currentIndex: selectedIndex,
       onTap: (index) {
         if (index == 0) {
-          // Navigate to HomePage directly when Home icon is tapped
+          //Going to  HomePage directly when Home icon is tapped
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => HomePage()), // Always go to HomePage
+            MaterialPageRoute(builder: (context) => HomePage()), //always go to HomePage
           );
         } else if (index == 1) {
-          // Navigate to ProfilePage when Profile icon is tapped
+          // ProfilePage when Profile icon is tapped
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ProfilePage()), // Navigate to ProfilePage
+            MaterialPageRoute(builder: (context) => ProfilePage()), //navigate to ProfilePage
           );
         }
       },
+      backgroundColor: const Color(0xFF2C2C2E), 
+      selectedItemColor: const Color(0xFFD76C5B), // coral when active
+      unselectedItemColor: Color(0xFFFBE8D2), // peach !!!
+      selectedFontSize: 14,
+      unselectedFontSize: 13,
+      type: BottomNavigationBarType.fixed,
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person), // Profile icon instead of calendar
+          icon: Icon(Icons.person), 
           label: 'Profile',
         ),
       ],

@@ -5,7 +5,7 @@ import 'package:jetsetgo/pages/create_account.dart';
 import 'package:jetsetgo/pages/login_page.dart';
 import 'dart:convert';
 
-import '../components/my_button.dart'; // Import the reusable button
+import '../components/my_button.dart'; 
 
 
 class LandingPage extends StatefulWidget {
@@ -18,13 +18,13 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   int _currentImageIndex = 0;
   List<String> _imagePaths = [];
-  late Timer _timer; // Declare the Timer variable
+  late Timer _timer; //declare the Timer variable
 
   @override
   void initState() {
     super.initState();
     _loadImagesFromAssets();
-    // Set the timer in initState
+    //set timer in initState
     _timer = Timer.periodic(Duration(seconds: 5), (timer) {
       // Only update state if the widget is still in the tree
       if (mounted) {
@@ -56,7 +56,7 @@ class _LandingPageState extends State<LandingPage> {
 
   @override
   void dispose() {
-    // Cancel the timer when the widget is disposed
+    //cancel the timer when the widget is disposed
     _timer.cancel();
     super.dispose();
   }

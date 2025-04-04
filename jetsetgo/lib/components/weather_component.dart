@@ -40,7 +40,7 @@ class WeatherSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 4, // Match the elevation of TripCard
+      elevation: 4,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12), // Match the border radius
       ),
@@ -63,7 +63,7 @@ class WeatherSection extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             
-            // Optional soft background circle
+            // background circle!
             Container(
               width: 120,
               height: 120,
